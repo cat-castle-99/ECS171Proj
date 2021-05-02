@@ -1,0 +1,11 @@
+body {
+  /* font stack */
+  font-family: Verbana, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  /* item spacing will be controlled by flex-grow */
+
+  min-height: 100vh;
+  /* the height of the body is at least the height of the viewport */
+}
