@@ -45,7 +45,7 @@ def my_form_post():
     text1 = request.form['categ1']
     text2 = request.form['numer1']
     combine = do_something(text1,text2)
-    print("past combine", file=sys.stderr)
+    #print("past combine", file=sys.stderr)
     #Data is sent to and from the sides as a JSON. In this example, it's just sending the combined form of our input back to the client side
     #In the future, we'll replace that do_someething() function with a function that parses the JSON for the model
     #Then, after running the model, we'll put the output from the model into a new JSON that we'll send back to the client-side
