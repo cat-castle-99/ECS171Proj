@@ -17,6 +17,19 @@
     //classes are always referenced with '.CLASS_NAME', id's always referenced with '#ID_NAME'
     var c1= $('#categorical1').val();
     var n1= $('#numerical1').val();
+    var agef = $('#age_html').val();
+    var sexf = $('#sex_html').val();
+    var cpf = $('#cp_html').val();
+    var trestbpsf = $('#trestbps_html').val();
+    var cholf = $('#chol_html').val();
+    var fbsf = $('#fbs_html').val();
+    var restecgf = $('#restecg_html').val();
+    var thalachf = $('#thalach_html').val();
+    var exangf = $('#exang_html').val();
+    var oldpeakf = $('#oldpeak_html').val();
+    var slopef = $('#slope_html').val();
+    var caf = $('#ca_html').val();
+    var thalf = $('#thal_html').val();
     //an ajax post request is a HTTP request sent from the client-side(our View) to the the server-side(our Controller)
     //an ajax post request is expected to send data/information with it--in our case, a JSON with all the user input
     //another type of ajax request is a get request--this is usually a request for data to be returned, and does not generally also send data
@@ -25,7 +38,20 @@
                   type: "POST",
                   //obviously should add more data to the JSON, and specify by feature name
                   data: {categ1:c1,
-                  numer1:n1}
+                  numer1:n1,
+                  age:agef,
+                  sex:sexf,
+                  cp:cpf,
+                  trestbps:trestbpsf,
+                  chol:cholf,
+                  fbs:fbsf,
+                  restecg:restecgf,
+                  thalach:thalachf,
+                  exang:exangf,
+                  oldpeak:oldpeakf,
+                  slope:slopef,
+                  ca:caf,
+                  thal:thalf}
               }).done(function(response) {
                 //This functin grabs the results of our operation. We may have incentive to separate these in the future
                 //If we do separate these, this function would then become part of an ajax GET request, as we're asking the server to get the output from the model
@@ -53,8 +79,22 @@
         <ul>
             <!--id's must be unique, should be the feature ids-->
             <!--li = list item, the input tag represents a generic user input object, the type parameter allows us to limit what the user can enter-->
+            <!--probably should make these cleaner somehow so that the html file itself is more readable-->
             <li class = "dataEntry">Enter a text object <input type ="text" id = "categorical1"></input></li>
             <li class = "dataEntry">Enter a number object <input type ="number" id = "numerical1"></input></li>
+            <li class = "dataEntry">Enter age (yrs) <input type ="number" id = "age_html"></input></li>
+            <li class = "dataEntry">Enter gender (1 = male, 0 = female) <input type ="number" id = "sex_html"></input></li>
+            <li class = "dataEntry">Enter chest pain type (0 = asymptomatic, 1 = atypical angina, 2 = non-anginal pain, 3 = typical angina) <input type ="number" id = "cp_html"></input></li>
+            <li class = "dataEntry">Enter resting blood pressure (mmHg) <input type ="number" id = "trestbps_html"></input></li>
+            <li class = "dataEntry">Enter cholesterol (mg/dl) <input type ="number" id = "chol_html"></input></li>
+            <li class = "dataEntry">Enter if fasting blood sugar > 120 mg/dl (1 = true, 0 = false) <input type ="number" id = "fbs_html"></input></li>
+            <li class = "dataEntry">Enter resting ECG results (0 = showing probable or definite left ventricular hypertrophy by Estes' criteria, 1 = normal, 2 = having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV) <input type ="number" id = "restecg_html"></input></li>
+            <li class = "dataEntry">Enter maximum heart rate achieved <input type ="number" id = "thalach_html"></input></li>
+            <li class = "dataEntry">Enter if exercise induced angina occurred (1 = yes, 0 = no) <input type ="number" id = "exang_html"></input></li>
+            <li class = "dataEntry">Enter ST depression induced by exercise relative to rest <input type ="number" id = "oldpeak_html"></input></li>
+            <li class = "dataEntry">Enter slope of the peak exercise ST segment (0 = downsloping, 1 = flat, 2 = upsloping) <input type ="number" id = "slope_html"></input></li>
+            <li class = "dataEntry">Enter number of major vessels (0-3) colored by fluoroscopy <input type ="number" id = "ca_html"></input></li>
+            <li class = "dataEntry">Enter heart defect type (1 = fixed defect; 2 = normal; 3 = reversable defect) <input type ="number" id = "thal_html"></input></li>
         </ul>
         <!--The submit button will be what calls our function--the user is expected to enter all(?) the information before submitting-->
         <button id="submit" onclick="sendData()">Submit</button>
