@@ -5,6 +5,7 @@
     #Passing input to the View to the Model
     #Passing output from the Model to the View
 from flask import Flask, request, render_template, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -85,4 +86,4 @@ def my_form_post():
     return jsonify(result=result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
