@@ -25,7 +25,7 @@ def checkValid(sex, ch, restecg, exang, slope, ca ,thal):
         invalidAttributes.append('slope')
     if ca not in ['0', '1', '2', '3']:
         invalidAttributes.append('colored major vessels')
-    if thal not in ['1', '2', '7']:
+    if thal not in ['1', '2', '3']:
         invalidAttributes.append('thalium tracer')
     print(invalidAttributes)
     return invalidAttributes
