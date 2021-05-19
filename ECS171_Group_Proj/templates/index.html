@@ -17,7 +17,7 @@
     //classes are always referenced with '.CLASS_NAME', id's always referenced with '#ID_NAME'
     var age= $('#age').val();
     var sex= $('#sex').val();
-    var ch= $('#ch').val();
+    var cp= $('#cp').val();
     var trestbps= $('#trestbps').val();
     var chol= $('#chol').val();
     var fbs= $('#fbs').val();
@@ -37,7 +37,7 @@
                   //obviously should add more data to the JSON, and specify by feature name
                   data: {age:age,
                     sex:sex,
-                    ch:ch,
+                    cp:cp,
                     trestbps:trestbps,
                     chol:chol,
                     fbs:fbs,
@@ -89,18 +89,18 @@
         <ol type="1">
             <!--id's must be unique, should be the feature ids-->
             <!--li = list item, the input tag represents a generic user input object, the type parameter allows us to limit what the user can enter-->
-            <li class = "dataEntry">Enter the age <input type ="number" id = "age" class= 'dataInput'></input></li>
-            <li class = "dataEntry">Enter the sex(1=male, 0=female) <input type ="number" id = "sex" class= 'dataInput'></input></li>
-            <li class = "dataEntry">Enter the chest pain type(0=asymptomatic, 1=atypical angina, 2= non-anginal pain, 3=typical angina) <input type ="number" id = "ch" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the age (in years) <input type ="number" id = "age" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the sex (1=male, 0=female) <input type ="number" id = "sex" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the chest pain type (0=asymptomatic, 1=atypical angina, 2= non-anginal pain, 3=typical angina) <input type ="number" id = "cp" class= 'dataInput'></input></li>
             <li class = "dataEntry">Enter the resting blood pressure (mmHg) <input type ="number" id = "trestbps" class= 'dataInput'></input></li>
-            <li class = "dataEntry">Enter the serum cholesterol(mg/dl)<input type ="number" id = "chol" class= 'dataInput'></input></li>
-            <li class = "dataEntry">Enter the fasting blood sugar(mg/dl) <input type ="number" id = "fbs" class= 'dataInput'></input></li>
-            <li class = "dataEntry">Enter the resting electrocardiographic results(0 = showing probable or definite left ventricular hypertrophy(Estes' criteria), 1=normal, 2=having ST-T wave abnormality) <input type ="number" id = "restecg" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the serum cholesterol (mg/dl)<input type ="number" id = "chol" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the fasting blood sugar (mg/dl) <input type ="number" id = "fbs" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the resting electrocardiographic results (0 = showing probable or definite left ventricular hypertrophy (Estes' criteria), 1=normal, 2=having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)) <input type ="number" id = "restecg" class= 'dataInput'></input></li>
             <li class = "dataEntry">Enter the maximum heart rate achieved <input type ="number" id = "thalach" class= 'dataInput'></input></li>
-            <li class = "dataEntry">Enter the exercised induced angina(y/n) <input type ="text" id = "exang" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the exercised induced angina (y/n) <input type ="text" id = "exang" class= 'dataInput'></input></li>
             <!--FIXME: Oldpeak may need to be changed to text so we can accept decimal values-->
-            <li class = "dataEntry">Enter the ST depression induced by exercise relative to rest <input type ="number" id = "oldpeak" class= 'dataInput'></input></li>
-            <li class = "dataEntry">Enter the slope of the peak exercise ST segment(0:downsloping, 1:flat, 2: upsloping) <input type ="number" id = "slope" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the ST depression induced by exercise relative to rest (old peak) <input type ="number" id = "oldpeak" class= 'dataInput'></input></li>
+            <li class = "dataEntry">Enter the slope of the peak exercise ST segment(0=downsloping, 1=flat, 2=upsloping) <input type ="number" id = "slope" class= 'dataInput'></input></li>
             <li class = "dataEntry">Enter the number of major vessels (0-3) colored by flourosopy <input type ="number" id = "ca" class= 'dataInput'></input></li>
             <li class = "dataEntry">Enter the thalium tracer results (1=fixed defect, 2=normal, 3=reversable defect) <input type ="number" id = "thal" class= 'dataInput'></input></li>
         </ol>
