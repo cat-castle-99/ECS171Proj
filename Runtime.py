@@ -10,22 +10,37 @@ from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 
-
+np.random.seed(1)
 
 class logModel:
     def __init__(self):
         self.seed=0 #seed for train test split. still needs to be implemented
         self.__dataSetRaw=None #raw unnormalizzed dataset
-        self.__dataSet = None #nomarlized dataset
+        self.__dataSetTrain = None #training data
+        self.__dataSetTest=None#test data
         self.__model=None # fitted model from pickles
         self.__userInput={} #users input format: dictionary
         self.__userOutput=0 #users result
 
-    def prepare(self):
-        return 0
+    def __prepare(self,userinput):
+        """a pseudo fit function. the model is already fitted but the data is passed
+        in RAW so it needs to be adjusted ny splitting it then adding the user input then normalizing it
+        this is so the user input can be normalized against the data"""
+        try:
+            self.__dataSetTrain, self.__dataSetTest = train_test_split(self.__dataSetRaw, train_size=0.7)
+            scale = MinMaxScaler()
+            leng= len(self.__dataSetTrain)
+            self.__dataSetTrain = self.__dataSetTrain.append(userinput, ignore_index=True)
+            if leng +1 != len(self.__dataSetTrain):
+                raise Exception('failed', 'append')
+            self.__dataSetTrain = scale.fit_transform(self.__dataSetTrain)
+            self.__dataSetTest = scale.fit_transform(self.__dataSetTest)
+        except:
+            print("Preparation ERROR")
+            return -1
 
     def readModel(self,filename):
-        #read in the model
+        """ read in the model from a pickle file. this model is already fitted"""
         try:
             loaded_model = pickle.load(open(filename, 'rb'))
             self.__model=loaded_model
@@ -35,7 +50,7 @@ class logModel:
             return -1
 
     def readDataSet(self,filename):
-        #read in the dataset
+        """Read in dataset. the dataset is RAW so it will need adjustment"""
         try:
             self.__dataSetRaw = pd.read_csv(filename)
             return 0
@@ -44,11 +59,11 @@ class logModel:
             return -1
 
     def makePrediction(self, userinput=None):
-        self.__dataSetRaw = self.__dataSetRaw.append(userinput, ignore_index=True)
-        scale=MinMaxScaler()
-        self.__dataSet = scale.fit_transform(self.__dataSetRaw)
-        self.__userInput=self.__dataSet.iloc[-1:]
+        """Predict user output. this function takes the user input, prepares the dataset then predicts
+        what the user will get as an output and returns it"""
         try:
+            self.__prepare(userinput)
+            self.__userInput = self.__dataSetTrain.iloc[-1:]
             predict = self.__model.predict([self.__userInput])
             self.__userOutput=predict
             return predict
@@ -57,7 +72,9 @@ class logModel:
             return -1
 
     def generateGraph(self):
-        # FIXME this function is far from finished
+        """This function generates all the graphs in a loop while writing them to a file
+            FIXME this function is far from finished"""
+
         try:
             #generate graph then write it
             self.writegraph(plt)
@@ -67,7 +84,9 @@ class logModel:
             return -1
 
     def writeGraphs(self,plt,key):
-        #FIXME this function is far from finished
+        """This function writes the graphs to a file based on the graphs name
+         FIXME this function is far from finished
+        """
         try:
             filename="Graph"+"_"+key+".png"
             plt.savefig(filename, format="PNG")
