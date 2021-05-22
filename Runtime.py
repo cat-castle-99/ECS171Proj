@@ -71,18 +71,6 @@ class logModel:
             print("Prediction ERROR")
             return -1
 
-    def generateGraph(self):
-        """This function generates all the graphs in a loop while writing them to a file
-            FIXME this function is far from finished"""
-
-        try:
-            #generate graph then write it
-            self.writegraph(plt)
-            return 0
-        except:
-            print("Graph generation ERROR")
-            return -1
-
     def writeGraphs(self,plt,key):
         """This function writes the graphs to a file based on the graphs name
          FIXME this function is far from finished
@@ -95,10 +83,26 @@ class logModel:
             print("Graph write ERROR")
             return -1
 
+    def generateGraph(self):
+        """This function generates all the graphs in a loop while writing them to a file
+            FIXME this function is far from finished"""
+
+        try:
+            to_graph = ['age', 'trestbps', 'thalach', 'oldpeak', 'chol']
+            for feature in to_graph:
+                sns.boxplot(y=self.__dataSetRaw[feature]).set_title(("User's " + feature))
+                plt.axhline(y=user_input[feature], color='red')
+                self.writeGraphs(plt, feature)
+                plt.clf()
+                return 0
+        except:
+            print("Graph generation ERROR")
+            return -1
+
 
 
 myModel=logModel()
-myModel.readDataSet("data.csv")
+myModel.readDataSet("dataset/heart.csv")
 myModel.readModel("model.file")
 myModel.makePrediction()
 myModel.generateGraph()
