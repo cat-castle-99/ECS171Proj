@@ -66,6 +66,7 @@ class logModel:
             self.__userInput = self.__dataSetTrain.iloc[-1:]
             predict = self.__model.predict([self.__userInput])
             self.__userOutput=predict
+            self.__dataSetTrain=self.__dataSetTrain[:-1]
             return predict
         except:
             print("Prediction ERROR")
