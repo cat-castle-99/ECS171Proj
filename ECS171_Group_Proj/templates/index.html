@@ -56,20 +56,27 @@
                 //this html variable is just defining a bunch of html objects in one- 2 line breaks, a paragraph containing "RESULT:" in bold, in a new line/paragraph, the value we recieved as output from the server, and another line break
                 var html= "<br><br><br><p> <b> RESULT : <b><p>";
                 response =response.result;
-                     $.each(response,function(key,val){
-                     console.log(val);
-                        html+="<p>"+val+"<p>"
-                    });
-                    html +="<br>";
-                    //this is putting all the html objects defined in the html variable in the div we instantiated in the body
-                    $(".result").append(html);
+                $.each(response,function(key,val){
+                  console.log(val);
+                  html+="<p>"+val+"<p>"
                 });
+                html +="<br>";
+                //this is putting all the html objects defined in the html variable in the div we instantiated in the body
+                $(".result").append(html);
+                //Display the slideshow
+                pics = ["../static/pics/rabbit_1.svg", "../static/pics/cat2.png", "../static/pics/cat3.png", "../static/pics/cat4.png", "../static/pics/Bee.jpg"]
+                var slideshowHTML = "";
+                for(i = 0; i<5; i++){
+                  slideshowHTML+=`<div class=\"page\"><img src=${pics[i]}/><div class=\"caption\"></div></div>`
+                }
+                $(".slideshow").html(slideshowHTML);
+                $(".slideshow").append("<a id=\"prev\" onclick=\"plusSlides(-1)\">&#10094;</a><a id=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>")
+                showSlides(1);
+              });
     };</script>
   <body>
-    <!-- yeah all of this can change-->
     <!--Assigning classes allows for ease of reference--both for CSS styling as well as for script references-->
     <nav>
-
       <!--Home -->
       <div id='home'>
         <h3>Home</h3>
@@ -108,7 +115,64 @@
         <button id="submit" onclick="sendData()">Submit</button>
         <!--This is reserved for the printing of the result-->
         <div class = "result"></div>
+      </div>
     </div>
+
+    <!--Copied this from an old webapp project of Catharina's done for ECS 162-->
+    <!--slideshow-->
+    <div class="slideshow">
+      <!--arrows to access next image-->
+      <div class="page">
+        <img src="../static/pics/PreSubmission.png"/>
+        <div class="caption"></div>
+      </div>
+    </div>
+    <!--buttons for under the slideshow-->
+    <!--FIXME: should be changed to number of graphs/visuals we actually have-->
+    <br />
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
     </div>
   </body>
+  <script>
+    /*Referenced https://www.w3schools.com/howto/howto_js_slideshow.asp for slideshow*/
+    /*also haha this script is in javascript rather than JQuery, because that's what Catharina's
+     familiar with for dynamic webapp programming rip*/
+
+    var pageIndex = 1;
+    showSlides(pageIndex);
+
+    function plusSlides(n) {
+      showSlides((pageIndex += n));
+    }
+
+    function currentSlide(n) {
+      showSlides((pageIndex = n));
+    }
+
+    function showSlides(n) {
+      var i;
+      //create an array of the pages
+      var pages = document.getElementsByClassName("page");
+      var dots = document.getElementsByClassName("dot");
+      if (n > pages.length) {
+        pageIndex = 1;
+      }
+      if (n < 1) {
+        pageIndex = pages.length;
+      }
+      for (i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      pages[pageIndex - 1].style.display = "block";
+      dots[pageIndex - 1].className += " active";
+}
+  </script>
 </html>
