@@ -27,11 +27,14 @@ class logModel:
         in RAW so it needs to be adjusted ny splitting it then adding the user input then normalizing it
         this is so the user input can be normalized against the data"""
         try:
+            userinput['target']=0
+            userFrame = pd.DataFrame(userinput, index=[0])
             self.__dataSetTrain, self.__dataSetTest = train_test_split(self.__dataSetRaw, train_size=0.7)
             scale = MinMaxScaler()
             leng= len(self.__dataSetTrain)
-            self.__dataSetTrain = self.__dataSetTrain.append(userinput, ignore_index=True)
-            if leng +1 != len(self.__dataSetTrain):
+            self.__dataSetTrain = self.__dataSetTrain.append(userFrame)
+            post_leng=len(self.__dataSetTrain)
+            if leng +1 != post_leng:
                 raise Exception('failed', 'append')
             self.__dataSetTrain = scale.fit_transform(self.__dataSetTrain)
             self.__dataSetTest = scale.fit_transform(self.__dataSetTest)
@@ -63,11 +66,12 @@ class logModel:
         what the user will get as an output and returns it"""
         try:
             self.__prepare(userinput)
-            self.__userInput = self.__dataSetTrain.iloc[-1:]
+            self.__userInput = self.__dataSetTrain[-1:]
+            self.__userInput=np.delete(self.__userInput,13)
             predict = self.__model.predict([self.__userInput])
-            self.__userOutput=predict
+            self.__userOutput=predict[0]
             self.__dataSetTrain=self.__dataSetTrain[:-1]
-            return predict
+            return self.__userOutput
         except:
             print("Prediction ERROR")
             return -1
@@ -84,7 +88,7 @@ class logModel:
             print("Graph write ERROR")
             return -1
 
-    def generateGraph(self):
+    def generateGraph(self,user_input):
         """This function generates all the graphs in a loop while writing them to a file
             FIXME this function is far from finished"""
 
@@ -95,16 +99,19 @@ class logModel:
                 plt.axhline(y=user_input[feature], color='red')
                 self.writeGraphs(plt, feature)
                 plt.clf()
-                return 0
+            return 0
         except:
             print("Graph generation ERROR")
             return -1
 
 
+userinput={'age': 25, 'sex': 1, 'cp': 1, 'trestbps': 120, 'chol': 200, 'fbs': 1,
+           'restecg': 0, 'thalach': 100, 'exang': 0, 'oldpeak': 140.0, 'slope': 0,
+           'ca': 0, 'thal': 1}
 
 myModel=logModel()
-myModel.readDataSet("dataset/heart.csv")
-myModel.readModel("model.file")
-myModel.makePrediction()
-myModel.generateGraph()
+myModel.readDataSet("./dataset/heart.csv")
+myModel.readModel("logress_model.sav")
+myModel.makePrediction(userinput)
+myModel.generateGraph(userinput)
 
