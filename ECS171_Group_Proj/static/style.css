@@ -16,10 +16,10 @@ body {
 nav{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   padding-bottom: 2%;
   background-color: #379683;
   color: #05386b;
+  justify-content: space-around;
 }
 
 .content{

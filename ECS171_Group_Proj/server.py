@@ -6,6 +6,7 @@
     #Passing output from the Model to the View
 from flask import Flask, request, render_template, jsonify
 import os
+from Runtime import logModel, userinput, myModel
 
 app = Flask(__name__)
 
@@ -83,6 +84,7 @@ def convertInput(age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, old
 
 @app.route('/')
 def home():
+    print(userinput)
     return render_template('index.html')
 
 @app.route('/getModelOutput', methods=['GET','POST'])
@@ -130,9 +132,16 @@ def my_form_post():
         print("All seems to be well")
         print(data_input)
         result = {
-            "output": "All good"
+            "data": data_input
+
         }
     result = {str(key): value for key, value in result.items()}
+    print("The result is...")
+    print(result["data"])
+    prediction = myModel.makePrediction(result["data"])
+    result["data"]["prediction"] = int(prediction)
+    print(result)
+    myModel.generateGraph(result["data"])
     return jsonify(result=result)
 
 if __name__ == '__main__':

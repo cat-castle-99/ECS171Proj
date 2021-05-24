@@ -57,14 +57,24 @@
                 var html= "<br><br><br><p> <b> RESULT : <b><p>";
                 response =response.result;
                 $.each(response,function(key,val){
-                  console.log(val);
-                  html+="<p>"+val+"<p>"
+                  let displayResult;
+                  if (val["prediction"] == 1){
+                    displayResult = "The patient may have heart problems."
+                  }
+                  else if (val["prediction"] == 0){
+                    displayResult = "The patient is fine."
+                  }
+                  else{
+                    displayResult = "There was a problem with classifying on the patient's data."
+                  }
+                  console.log(val["prediction"]);
+                  html+="<p>"+displayResult+"<p>"
                 });
                 html +="<br>";
                 //this is putting all the html objects defined in the html variable in the div we instantiated in the body
                 $(".result").append(html);
                 //Display the slideshow
-                pics = ["../static/pics/rabbit_1.svg", "../static/pics/cat2.png", "../static/pics/cat3.png", "../static/pics/cat4.png", "../static/pics/Bee.jpg"]
+                pics = ["../static/pics/Graph_age.png", "../static/pics/Graph_chol.png", "../static/pics/Graph_oldpeak.png", "../static/pics/Graph_thalach.png", "../static/pics/Graph_trestbps.png"]
                 var slideshowHTML = "";
                 for(i = 0; i<5; i++){
                   slideshowHTML+=`<div class=\"page\"><img src=${pics[i]}/><div class=\"caption\"></div></div>`

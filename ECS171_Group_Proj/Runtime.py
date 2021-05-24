@@ -82,7 +82,7 @@ class logModel:
         """
         try:
             filename="Graph"+"_"+key+".png"
-            plt.savefig(filename, format="PNG")
+            plt.savefig(f"./static/pics/{filename}", format="PNG")
             return 0
         except:
             print("Graph write ERROR")
@@ -110,8 +110,8 @@ userinput={'age': 25, 'sex': 1, 'cp': 1, 'trestbps': 120, 'chol': 200, 'fbs': 1,
            'ca': 0, 'thal': 1}
 
 myModel=logModel()
-myModel.readDataSet("./dataset/heart.csv")
+myModel.readDataSet("../dataset/heart.csv")
 myModel.readModel("logress_model.sav")
-myModel.makePrediction(userinput)
-myModel.generateGraph(userinput)
+# myModel.makePrediction(userinput)
+# myModel.generateGraph(userinput)
 
