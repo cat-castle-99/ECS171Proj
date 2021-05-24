@@ -13,6 +13,10 @@ body {
   background-color: #5CDB95;
 }
 
+b{
+  font-weight: bold;
+}
+
 nav{
   display: flex;
   flex-direction: row;
@@ -93,4 +97,9 @@ img {
 }
 .dot:active, .dot:hover {
   background-color: #717171;
+}
+
+.result{
+  display: flex;
+  justify-content: center;
 }
