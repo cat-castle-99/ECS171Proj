@@ -17,6 +17,7 @@ b{
   font-weight: bold;
 }
 
+
 nav{
   display: flex;
   flex-direction: row;
@@ -102,4 +103,21 @@ img {
 .result{
   display: flex;
   justify-content: center;
+  padding: 5%;
+}
+
+.page{
+  display: flex;
+  max-width: 450px;
+  max-height: 450px;
+  justify-content: center;
+}
+
+.slideshow{
+  display: flex;
+  justify-content: center;
+}
+
+#prev{
+  left: 0;
 }
