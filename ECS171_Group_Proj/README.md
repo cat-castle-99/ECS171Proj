@@ -8,7 +8,9 @@
 - templates  
     - index.html                # The static web file to be served  
 - server.py                     # The Controller of our webapp-will serve the index.html page, as well as any Model files  
-- Runtime.py                   # File with backend model building/functionality
+- Runtime.py                   # File for loading backend machine learning model and using it for predictions and making graphs for user output
+- logless\_model.sav           # Save file for trained model to run by
+  Runtime.py
 - README.md                   # This file  
 
 
