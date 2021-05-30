@@ -1,5 +1,8 @@
 # README.md
 
+## To Run:
+Run using ```python server.py``` command in your command line/console
+
 ## Files:
 - static  
     - reset.css                 # Overrides browser-default styling so our website will look the same regardless of browser  
