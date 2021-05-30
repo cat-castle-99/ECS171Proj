@@ -1,5 +1,5 @@
 # ECS171Proj
 
-Go to ECS171\_Group\_Proj directory
+Go to the ECS171\_Group\_Proj directory in your command line/console
 
-Run using ```python server.py```
+Run using ```python server.py``` command in your command line/console
