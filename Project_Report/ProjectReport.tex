@@ -142,6 +142,15 @@ In the higher risk population , 56.36\%  are male patients and  43.64\% are fema
 \subsection*{Solution Overview:}
 We are interested in producing a web application that can accurately produce a prediction for heart disease from user input using a machine learning model. The overall process we implemented was first processing our dataset by removing outliers, splitting it, and normalizing the values. Next we trained the model on the dataset and ported it over to a simple file that can be used at runtime for when the user enters their input. Lastly we take the user input and use the model to predict whether they are at risk for heart disease. Obvious obstacles we had to overcome were creating the model as well as an interface for it, displaying the users results, and picking the best algorithm. 
 
+A Logistic Regression model determines categorical dependent variables on the basis of independent variables. It is similar to Linear Regression, with the addition of the Sigmoid Activation Function, which contains values between 0 and 1: 
+$$S(x) = \frac{1}{1+e^x}$$
+This is suitable for our problem as we would like to predict heart disease, which is either 0 (which implies no heart disease) or 1 (there is a heart disease). It also has a different cost function from linear regression. Gradient Descent was run to minimize this cost function. Finally, values can be predicted using this model by using the following formula:
+$$log(\frac{p}{1-p}) = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \dots$$
+Where P is the probability of heart disease, represents the model coefficients, and xrepresents the features.
+
+We decided to test the dataset using a model trained on Logistic Regression as well as Random Forest. Although the Logistic Regression model has a higher mse compared to the Random Forest model, we stuck to Logistic Regression. We decided to stick to Logistic Regression based on the fact that the Random Forest model would have a much lower accuracy on the test data.
+
+
 \subsection*{Model Evaluation}
 Since the final model is solely used for classification, evaluating the accuracy of the model is extremely important. Further specifying with the precision and recall scores will more accurately portray the performance of the model. As such, it follows that the comparison of the two algorithms we decided to implement, logistic regression and random forest, required the best scores in precision and recall within reasonable bounds. The mean squared error of the two models was also calculated as a general indication of performance and evaluation of the model resulted in the following metrics:
 
