@@ -11,6 +11,7 @@
 \usepackage{enumitem}
 \usepackage[english]{babel}
 \usepackage{fancyhdr}
+\usepackage{hyperref}
 
 % \geometry{
 %     a4paper,
@@ -49,7 +50,7 @@
 
 
 % Title content
-\title{\textbf{ECS 171 - Project Report}}
+\title{\textbf{Heart Problem Predictor}}
 %\author{\small Arielle Soomi Yoo, Samuel Robert Perelgut, Catherina Castillo, Mia Ma, William T Wu, Aashir Shukla, Derek Li}
 \author{}
 \date{}
@@ -177,6 +178,7 @@ For the framework of our website, we opted to use HTML, CSS and Jquery for the c
 Some challenges specifically for the frontend was learning about web development. Most of the members of our team had little experience in Flask, HTML, CSS, and JQuery, which involved specific coding languages or functions that we had never seen before. Catharina Castillo and William Wu both had experience with HTML and CSS, but Flask and JQuery were new for everyone. This resulted in a bit of a learning curve for everyone, especially with regards to learning how to use Flask to both integrate with HTML, CSS, and JQuery as well as with Python, despite it being a Python-based framework.. In general, we had to lean on Catharina on our team because she had the most experience with web development. We are very grateful that we had someone familiar with these kinds of frameworks, but it made trying to split up work evenly difficult as she had to do the bulk of the set up. Fortunately, Arielle Yoo and William Wu were able to catch on well enough to handle a lot of the post-setup coding, for example, expanding inputs to represent the dataset properly, as well as web-styling.
 	On the backend side of things, the programming process proceeded without much issue, however, this changed when it came time to integrate the backend code with the front end. Specifically , one of the major obstacles was providing the front end with a fitted model and processed dataset without having to calculate these values each time the website is used. In order to solve this problem we used a library called pickle which writes models to a file so that we could fit the model statically and then pass read it in at run time. On the dataset side of things the problem was not as easy to solve. This is because we needed both the processed and unprocessed data at run time. We use the processed data to create graphs with the user input dynamically, while we use the raw data to normalize the users input so that it is compatible with the fitted model. The solution we went with was to pass in a partially processed dataset and then finish the processing dynamically. This allowed us to both normalize the user input and use the data for graphing while only using a single dataset.  
 While our project already provides a useful service that medical professionals could use to help save human lives, there are still many more useful and interesting innovations that us or an entirely different group could add to it in the future. Firstly even though we only considered logistic regression and random forest for our algorithm this is by no means the only option. For example, a neural network with the right parameters may yield even better results than our model did. On the front end side of things, the website itself is not all that complex and there are plenty of ways we could improve the design to improve its aesthetic. The website only consisted of a few text boxes and some graphs, however, it could also provide additional information related to heart problems. Such as how to prevent and deal with them. On a much grander scale, this website could be integrated with others like it to create a program that ensures overall patient healthiness by giving them a diagnosis on a wide array of health issues.
+Our project page can be found at \url{https://github.com/cat-castle-99/ECS171Proj}
 
 \newpage
 \begin{center}
@@ -184,22 +186,22 @@ While our project already provides a useful service that medical professionals c
 \end{center}
 
 \begin{enumerate}
-    \item Lysaght, T., Lim, H.Y., Xafis, V. et al. AI-Assisted Decision-making in Healthcare. ABR 11, 299–314 (2019). https://doi.org/10.1007/s41649-019-00096-0
-    \item Ronit. “Heart Disease UCI.” Kaggle, 25 June 2018, \\ www.kaggle.com/ronitf/heart-disease-uci.
+    \item Lysaght, T., Lim, H.Y., Xafis, V. et al. AI-Assisted Decision-making in Healthcare. ABR 11, 299–314 (2019). \url{https://doi.org/10.1007/s41649-019-00096-0}
+    \item Ronit. “Heart Disease UCI.” Kaggle, 25 June 2018, \\ \url{www.kaggle.com/ronitf/heart-disease-uci}.
     \item Detrano, R., Janosi, A., Steinbrunn, W., Pfisterer, M., 
     Schmid, J., Sandhu, S., Guppy, K., Lee, S., \& Froelicher, V. 
     (1989). International application of a new probability algorithm 
     for the diagnosis of coronary artery disease. American Journal of 
-    Cardiology, 64,304--310. \\ https://www.sciencedirect.com/science/article/pii/0002914989905249?via\%3Dihub
-    \item Pop, Dragos-Paul, and Adam Altar. “Designing an MVC Model for Rapid Web Application Development.” Procedia Engineering, Elsevier, 25 Mar. 2014, \\ www.sciencedirect.com/science/article/pii/S187770581400352X.
-    \item Bini, Stefano A. “Artificial Intelligence, Machine Learning, Deep Learning, and Cognitive Computing: What Do These Terms Mean and How Will They Impact Health Care?” The Journal of Arthroplasty, Churchill Livingstone, 27 Feb. 2018, \\ www.sciencedirect.com/science/article/pii/S0883540318302158
-    \item UCI Machine Learning Repository: Heart Disease Data Set, \\ https://archive.ics.uci.edu/ml/datasets/Heart+Disease/
-    \item Gennari, John H., et al. “Models of Incremental Concept Formation.” Artificial Intelligence, Elsevier, Sept. 1989, \\ www.sciencedirect.com/science/article/pii/0004370289900465.
+    Cardiology, 64,304--310. \\ \url{https://www.sciencedirect.com/science/article/pii/0002914989905249?via%3Dihub}
+    \item Pop, Dragos-Paul, and Adam Altar. “Designing an MVC Model for Rapid Web Application Development.” Procedia Engineering, Elsevier, 25 Mar. 2014, \\ \url{www.sciencedirect.com/science/article/pii/S187770581400352X}.
+    \item Bini, Stefano A. “Artificial Intelligence, Machine Learning, Deep Learning, and Cognitive Computing: What Do These Terms Mean and How Will They Impact Health Care?” The Journal of Arthroplasty, Churchill Livingstone, 27 Feb. 2018, \\ \url{www.sciencedirect.com/science/article/pii/S0883540318302158}
+    \item UCI Machine Learning Repository: Heart Disease Data Set, \\ \url{https://archive.ics.uci.edu/ml/datasets/Heart+Disease/}
+    \item Gennari, John H., et al. “Models of Incremental Concept Formation.” Artificial Intelligence, Elsevier, Sept. 1989, \\ \url{www.sciencedirect.com/science/article/pii/0004370289900465}.
     \item M. Pal (2005) Random forest classifier for remote sensing classification, International Journal of Remote Sensing, 26:1, 217-222, DOI: 10.1080/01431160412331269698 \\
-    https://www.tandfonline.com/doi/full/10.1080/01431160412331269698?casa\_token=uzMXfL0QedgAAAAA\%3AlPhsBxS-K20fWRnI9BT1DI\_PfZe5zXHlFDLrhmlEoER9MG2G3bgdDQ-39KlJqnxvAAi3\_Ym7bx0
-    \item Kurt, Imran, et al. “Comparing Performances of Logistic Regression, Classification and Regression Tree, and Neural Networks for Predicting Coronary Artery Disease.” Expert Systems with Applications, Pergamon, 10 Oct. 2006, \\ www.sciencedirect.com/science/article/pii/S0957417406002855?casa\_token=zXAY3V78ua8AAAAA\%3AYAykd-8uDPDBiAOc1iuk0XaHpyjuQmnazj1E7\_Wuk5cbGlxF\_9y75W2wXivnxns\_eTgPeI9\_.
-    \item Austin, Peter C., et al. “Using Methods from the Data-Mining and Machine-Learning Literature for Disease Classification and Prediction: a Case Study Examining Classification of Heart Failure Subtypes.” Journal of Clinical Epidemiology, Pergamon, 4 Feb. 2013, \\ www.sciencedirect.com/science/article/pii/S0895435612003551?casa\_token=GTuNPBwijyAAAAAA\%3AWByDc2H\_WHbxrtoKe3n1mxz7oKhiDi9RSFxSPcP0OaLxC9g8tALRz5OhbC-mx6BIYY7YOP1H\#bib15.
-    \item Khalilia, Mohammed, et al. “Predicting Disease Risks from Highly Imbalanced Data Using Random Forest.” BMC Medical Informatics and Decision Making, BioMed Central, 29 July 2011, https://link.springer.com/article/10.1186/1472-6947-11-51.
+    \url{https://www.tandfonline.com/doi/full/10.1080/01431160412331269698?casa_token=uzMXfL0QedgAAAAA%3AlPhsBxS-K20fWRnI9BT1DI_PfZe5zXHlFDLrhmlEoER9MG2G3bgdDQ-39KlJqnxvAAi3_Ym7bx0}
+    \item Kurt, Imran, et al. “Comparing Performances of Logistic Regression, Classification and Regression Tree, and Neural Networks for Predicting Coronary Artery Disease.” Expert Systems with Applications, Pergamon, 10 Oct. 2006, \\ \url{www.sciencedirect.com/science/article/pii/S0957417406002855?casa_token=zXAY3V78ua8AAAAA%3AYAykd-8uDPDBiAOc1iuk0XaHpyjuQmnazj1E7_Wuk5cbGlxF_9y75W2wXivnxns_eTgPeI9_}
+    \item Austin, Peter C., et al. “Using Methods from the Data-Mining and Machine-Learning Literature for Disease Classification and Prediction: a Case Study Examining Classification of Heart Failure Subtypes.” Journal of Clinical Epidemiology, Pergamon, 4 Feb. 2013, \\ \url{www.sciencedirect.com/science/article/pii/S0895435612003551?casa_token=GTuNPBwijyAAAAAA%3AWByDc2H_WHbxrtoKe3n1mxz7oKhiDi9RSFxSPcP0OaLxC9g8tALRz5OhbC-mx6BIYY7YOP1H\#bib15}.
+    \item Khalilia, Mohammed, et al. “Predicting Disease Risks from Highly Imbalanced Data Using Random Forest.” BMC Medical Informatics and Decision Making, BioMed Central, 29 July 2011, \url{https://link.springer.com/article/10.1186/1472-6947-11-51}.
 \end{enumerate}
 
 \end{document}
